@@ -2,7 +2,7 @@
 ## yarn install
 
 In the project directory, you can run:
-### 'npm run start'
+### `npm run start`
 or
 ### `yarn start`
 
