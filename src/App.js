@@ -65,6 +65,7 @@ function App() {
   const reset = () => {
     setValues(initialValues)
     setMonthNames({fromMonth:"",toMonth:""})
+    regenerateData({data:{1902:'77.5', 1905:'88',1910:'90'}})
   }
 
 
