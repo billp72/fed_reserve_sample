@@ -85,6 +85,10 @@ function App() {
             <Dropdown.Item eventKey="fromDate,1999">1999</Dropdown.Item>
             <Dropdown.Item eventKey="fromDate,1998">1998</Dropdown.Item>
             <Dropdown.Item eventKey="fromDate,1997">1997</Dropdown.Item>
+            <Dropdown.Item eventKey="fromDate,1996">1996</Dropdown.Item>
+            <Dropdown.Item eventKey="fromDate,1995">1995</Dropdown.Item>
+            <Dropdown.Item eventKey="fromDate,1998">1994</Dropdown.Item>
+            <Dropdown.Item eventKey="fromDate,1993">1993</Dropdown.Item>
           </DropdownButton>
         </div>
         <div className="col-lg-2">
@@ -118,6 +122,10 @@ function App() {
               <Dropdown.Item eventKey="toDate,1999">1999</Dropdown.Item>
               <Dropdown.Item eventKey="toDate,1998">1998</Dropdown.Item>
               <Dropdown.Item eventKey="toDate,1997">1997</Dropdown.Item>
+              <Dropdown.Item eventKey="toDate,1996">1996</Dropdown.Item>
+              <Dropdown.Item eventKey="toDate,1995">1995</Dropdown.Item>
+              <Dropdown.Item eventKey="toDate,1994">1994</Dropdown.Item>
+              <Dropdown.Item eventKey="toDate,1993">1993</Dropdown.Item>
             </DropdownButton>
         </div>
         <div className="col-lg-2">
