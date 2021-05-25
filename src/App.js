@@ -18,18 +18,36 @@ function App() {
     regenerateData({data:{1902:'77.5', 1905:'88',1910:'90'}})
   }, []);
 
-
-
+  const [monthNames, setMonthNames] = useState({fromMonth:"",toMonth:""})
   const [values, setValues] = useState(initialValues);
   const [chartdata, setData] = useState([]);
   const [title, setTitle] = useState({units:"Y axis", base_period:"X axis"});
+
+  const months = {
+    "1":"January",
+    "2":"February",
+    "3":"March",
+    "4":"April",
+    "5":"May",
+    "6":"June",
+    "7":"July",
+    "8":"August",
+    "9":"September",
+    "10":"October",
+    "11":"November",
+    "12":"December"
+  }
 
   const handleSelect = (e) => {
     const [name, value] = e.split(",");
     //console.log(name, value)
     setValues({
       ...values,
-      [name]: value,
+      [name]: value
+    })
+    setMonthNames({
+      ...monthNames,
+      [name]: months[value]
     })
   }
 
@@ -46,6 +64,7 @@ function App() {
 
   const reset = () => {
     setValues(initialValues)
+    setMonthNames({fromMonth:"",toMonth:""})
   }
 
 
@@ -98,7 +117,7 @@ function App() {
             key="fromMonth"
             id={`dropdown-variants-Primary`}
             variant="Primary"
-            title={values.fromMonth  || "From Month"}
+            title={monthNames.fromMonth  || "From Month"}
             onSelect={handleSelect}
           >
             <Dropdown.Item eventKey="fromMonth,1">January</Dropdown.Item>
@@ -135,7 +154,7 @@ function App() {
             key="toMonth"
             id={`dropdown-variants-Primary`}
             variant="Primary"
-            title={values.toMonth  || "To Month"}
+            title={monthNames.toMonth  || "To Month"}
             onSelect={handleSelect}
           >
             <Dropdown.Item eventKey="toMonth,1">January</Dropdown.Item>
