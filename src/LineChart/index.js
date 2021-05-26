@@ -1,6 +1,7 @@
 import BaseChart from '../BaseChart';
 import classnames from 'classnames';
 import * as d3 from 'd3';
+import { scaleBandInvert } from '../invertScale';
 
 import './index.scss';
 
@@ -33,7 +34,24 @@ function drawLineChart(props) {
     .attr('class', 'line')
     .attr('d', line)
     .attr('class', classnames(['line-chart__path', lineClass]));
-
 }
 
-export default BaseChart(drawLineChart, {useScaleBands:{x:true,y:true},findHoverData:''});
+function findHoverData(event, height, data, xScale, yScale) {
+  const [xPos, yPos] = event;
+  const xInvertedPoint = scaleBandInvert(xScale, xPos);
+  //const yInvertedPoint = scaleBandInvert(yScale, height - yPos);
+  const d0 = data.filter(({ label, value }) => {
+    return label === xInvertedPoint //&& value === yInvertedPoint
+  })[0];
+
+  return d0;
+}
+
+//const findHoverData = '' 
+const useScaleBands = { x: true, y: true };
+const extraProps = {
+  useScaleBands,
+  findHoverData
+}
+
+export default BaseChart(drawLineChart, extraProps);

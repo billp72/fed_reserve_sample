@@ -50,21 +50,19 @@ function drawTooltip(config) {
     })
     .on('mousemove', mousemove);
 
-  function mousemove() {
+  function mousemove(e) {
     const bisect = d3.bisector((d) => d.label).left;
-    const xPos = d3.pointer(this)[0];
+    const xPos = d3.pointer(e)[0];
     const invertedPoint = useScaleBands ? scaleBandInvert(xScale, xPos) : xScale.invert(xPos);
     const x0 = bisect(data, invertedPoint);
-    const d0 = findHoverData ? findHoverData(d3.pointer(this), height, data, xScale, yScale) : data[x0];
-
+    const d0 = findHoverData ? findHoverData(d3.pointer(e), height, data, xScale, yScale) : data[x0];
     focus.style('opacity', 1);
-
-    focus.attr(
-      'transform',
-      `translate(${xScale(d0.label)},${yScale(d0.value)})`,
-    );
-
-    tooltip
+    if(d0 && d0.label !== 'undefined'){
+      focus.attr(
+        'transform',
+        `translate(${xScale(d0.label)},${yScale(d0.value)})`,
+      );
+      tooltip
       .transition()
       .duration(300)
       .style('opacity', 0.9);
@@ -83,6 +81,7 @@ function drawTooltip(config) {
         'top',
         `${yScale(d0.value) + margin.top - 10}px`,
       );
+    }
   }
 }
 

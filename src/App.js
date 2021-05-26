@@ -40,7 +40,6 @@ function App() {
 
   const handleSelect = (e) => {
     const [name, value] = e.split(",");
-    //console.log(name, value)
     setValues({
       ...values,
       [name]: value
@@ -77,7 +76,6 @@ function App() {
     for (let i in d.data) {
       //const value = Math.floor(Math.random() * i + 3);
       value = d['data'][i];
-      console.log(value)
       chartData.push({
         label: i,
         value,
