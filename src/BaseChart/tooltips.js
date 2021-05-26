@@ -57,7 +57,7 @@ function drawTooltip(config) {
     const x0 = bisect(data, invertedPoint);
     const d0 = findHoverData ? findHoverData(d3.pointer(e), height, data, xScale, yScale) : data[x0];
     focus.style('opacity', 1);
-    if(d0 && d0.label !== 'undefined'){
+    if(d0 && d0.label !== undefined){
       focus.attr(
         'transform',
         `translate(${xScale(d0.label)},${yScale(d0.value)})`,
